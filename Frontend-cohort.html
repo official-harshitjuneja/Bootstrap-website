@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Cohort</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <style>
+        .search-container {
+    float: right;
+    padding: 16px 0px 16px 16px;
+    margin: 0px 25px 0px 25px;
+}
+
+.search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #b5bbfd;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.fa-search:before {
+    color: rgb(0, 0, 0);
+    border: none;
+    outline: none;
+}
+
+.fa-search:active {
+    border: none;
+    outline: none;
+    border: 0;
+    outline: 0 !important;
+}
+
+.search-container-button button {
+    float: right;
+    padding: 6px 10px;
+    margin-right: 25px;
+    background: gold;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    right: 38px;
+    margin-left: 0px;
+    margin-top: -40px;
+    margin-bottom: 0px;
+    position: absolute;
+    font-weight: bolder;
+}
+
+.search-container-button button {
+    border: 0px;
+    border-radius: 0px;
+    outline: none !important;
+}
+.body-content {
+    margin: 40px;
+}
+
+.dropdown-container {
+    margin: 40px 0px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 5px 42px;
+    margin: 20px 5px 5px 45px;
+    width: 160px;
+    height: 38px;
+    background-color: gold;
+    font-weight: bolder;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 4px;
+}
+
+.fa {
+    float: right;
+}
+
+.navbar a:hover,
+.dropdown:hover #dropbtn,
+.dropbtn:focus {
+    background-color: rgba(255, 217, 0, 0.856);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: 45px;
+    background-color: rgb(255, 217, 0)
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 2px;
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+#media-carousel-container {
+    margin: 10px 40px 40px 40px;
+}
+
+#media-holder-action,
+#media-holder-drama,
+#media-holder-scifi {
+    clear: both;
+}
+
+.popular-heading {
+    border-bottom: 1px solid #11121b;
+}
+
+#image-container-action,
+#image-container-drama,
+#image-container-scifi {
+    height: 250px;
+}
+
+.media-carousel,
+.media-carousel-movies {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 10px 5px;
+    float: left;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    /* Fallback color */
+    background: rgba(0, 0, 0, 0.5);
+    /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    text-align: center;
+}
+
+#no-results {
+    display: none;
+    text-align: center;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+    font-size: 25px;
+    margin-top: -160px;
+}
+form {
+    float: right;
+}
+
+input.input-medium.search-query {
+    margin-top: -44px;
+    height: 40px;
+    margin-right: 55px;
+    border: rgb(24, 23, 21);
+    border-radius: 4px;
+    border-style: double;
+    width: 1059px;
+    position: relative;
+    background-color: gold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(90, 89, 89, 0.904);
+    font-weight: bolder;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1 !important;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: gold;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+    </style>
+</head>
+<body class="bg-dark d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, rgb(92, 48, 48), gold, green); animation: change 23s ease-in-out infinite; @keyframes change{0%{background-position: 0 50%;}50%{background-position: 100% 50%;}100%{background-position: 0 50%;}} background-size: 400% 400%;">
+        <div class="container w-auto">
+            <a class="navbar-brand" href="#">
+              <img src="Images/pngegg.png" alt="Logo" width="38" height="38">
+            </a>
+          </div>
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item me-5">
+                <a class="nav-link active" aria-current="page" href="#">Frontend Cohort</a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="#">Backend Cohort</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Fullstack Cohort</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://source.unsplash.com/1400x400/?code" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/1400x400/?coding" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/1400x400/?coding,html" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/1400x400/?code,tech,css" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/1400x400/?code,javascript" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      </div>
+      <div class="dropdown w-25">
+        <button style="height: 52px;" class="dropbtn"><span id="genreText">Topics</span><i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content">
+            <a onclick="getMediaPosters(this.text)">All</a>
+            <a onclick="getMediaPosters(this.text)">Artificial Intelligence</a>
+            <a onclick="getMediaPosters(this.text)">Machine Learning</a>
+            <a onclick="getMediaPosters(this.text)">Software Development</a>
+        </div>
+
+    </div>
+    <div class="search-container" style="margin-top: -55px;">
+        <form onsubmit="javascript:return false;">
+            <input type="text" class="input-medium search-query" placeholder="Search your favourite language" name="search" oninput="updateResults()">
+
+            <!-- <div class="search-container-button">
+                <button type="submit" onclick="updateResults()"><i class="fa fa-search"></i></button>
+            </div> -->
+
+        </form>
+    </div>
+    <div id="media-carousel-container">
+
+
+        <div id="media-holder-action">
+
+            <div id="image-container-action">
+                 <div class="movies-action">
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/html.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">HTML</b><br/>Hyper Text Markup Language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/css.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">CSS</b><br/>Cascading Style Sheets </div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/python.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Python</b><br/>A High-level programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/java.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Java</b><br/>A High-level programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/Javascript.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Javascript</b><br/>A Programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/swift.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Swift</b><br/>A Programming language</div>
+                    </div>
+                </div>
+
+                 <div class="movies-drama">
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/c++.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">C++</b><br/>A Programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/c-hash.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">C#</b><br/>A Programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/r-language.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">R</b><br/>A Programming language for statistical comuting</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/go.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Golang</b><br/>A compiled programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/reactjs.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Reactjs</b><br/>A Marvel Comics superhero team.</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/nodejs.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Nodejs</b><br/>An open source javascript library</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/expressjs.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Expressjs</b><br/>A backend web application framework for Node.js</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/mongoDB.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">MongoDB</b><br/>A document-oriented database program</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/mysql.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">MySQL</b><br/>An open-source relational database management system</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/coffeescript.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">CoffeeScript</b><br/>A Programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/typescript.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Typescript</b><br/>A programming language developed by Microsoft</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/angularjs.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Angularjs</b><br/>A JavaScript-based open-source front-end web framework</div>
+                    </div>
+                </div> 
+
+                 <div class="movies-scifi">
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/php.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">PHP</b><br/>A general-purpose scripting language</div>
+                    </div>
+                     <div class="media-carousel-movies ps-5">
+                        <img src="Images/bootstrap.webp" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">bootstrap</b><br/>A Front-end framework</div>
+                    </div> 
+                     <div class="media-carousel-movies ps-5">
+                        <img src="Images/tailwind-css.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Tailwind CSS</b><br/>A utility-first CSS framework</div>
+                    </div> 
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/xml.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">XML</b><br/>A markup language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/kotlin.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Kotlin</b><br/>A general-purpose programming language</div>
+                    </div>
+
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/flask.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Flask</b><br/>A micro web framework written in Python</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/django.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">django</b><br/>A Python-based free and open-source web framework</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/api.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">API's</b><br/>An application programming interface</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/ruby.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Ruby</b><br/>A High-level programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/perl.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Perl</b><br/>A High-level programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/rust.jpeg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Rust</b><br/>A Programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/solidity.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Solidity</b><br/>An object-oriented programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/vuejs.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Vuejs</b><br/>An open-source model–view–viewmodel front end JavaScript framework</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/jquery.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">jQuery</b><br/>A JavaScript library</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/c-language.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">C</b><br/>A Computer programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/julia.png" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Julia</b><br/>A High-level programming language</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/Lisp.jpg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">LISP</b><br/>A family of programming languages</div>
+                    </div>
+                    <div class="media-carousel-movies ps-5">
+                        <img src="Images/scala.jpeg" alt="media carousel" width=200 height=200 />
+                        <div class="overlay"><b class="movie-title">Scala</b><br/>A Programming language</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="navbar navbar-expand-lg navbar-light d-flex mt-auto" style="background: linear-gradient(to right, rgb(92, 48, 48), gold, green); animation: change 23s ease-in-out infinite; @keyframes change{0%{background-position: 0 50%;}50%{background-position: 100% 50%;}100%{background-position: 0 50%;}} background-size: 400% 400%;">
+        <div class="container w-auto">
+            <a class="navbar-brand" href="#">
+              <img src="Images/pngegg.png" alt="Logo" width="38" height="38">
+            </a>
+          </div>
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            Powered by Anti-Coders 2022. All Rights Reserved.
+          </div>
+        </div>
+  </footer>
+    <script>
+        
+        
+        var movieTitle;    
+        var currentGenre = "Topics";
+        var slideIndex = [1,1];
+                        showSlides(1, 0);
+                
+                        function plusSlides(n, no) {
+                                showSlides(slideIndex[no] += n, no);
+                        }
+                
+                        function showSlides(n, no) {                        
+                                var x = document.getElementsByClassName("slides");
+
+                                if (n > x.length) {slideIndex[no] = 1}    
+                                
+                                if (n < 1) {slideIndex[no] = x.length}
+                                
+                                for (var i = 0; i < x.length; i++) {
+                                        x[i].style.display = "none";  
+                                }
+                                
+                                x[slideIndex[no]-1].style.display = "block";  
+                        }
+        
+        function showNoResultsText(totalcount){
+                
+                if(totalcount == 0){
+                        document.getElementById("no-results").style.display="block";
+                        console.log('totalcount in showNoResultsText' + totalcount);
+                }
+                else    {
+                        document.getElementById("no-results").style.display="none";
+                }
+                
+        }
+
+
+                function updateResults() {
+                var query = document.getElementsByClassName('search-query')[0].value.trim().toLowerCase(); 
+                var counter = 0;                                                           
+
+                if(currentGenre == 'All'|| currentGenre == 'Topics'){
+                        movieTitle = document.getElementsByClassName('movie-title');
+                }
+                if(currentGenre == 'Artificial Intelligence'){
+                        movieTitle = document.getElementsByClassName('movies-artificialintelligence')[0].getElementsByClassName('movie-title');
+                }
+                if(currentGenre == 'Machine Learning'){
+                        movieTitle = document.getElementsByClassName('movies-machinelearning')[0].getElementsByClassName('movie-title');                                
+                }
+                if(currentGenre == 'Software Development'){
+                        movieTitle = document.getElementsByClassName('movies-softwaredevelopment')[0].getElementsByClassName('movie-title');                        
+                }
+
+
+                for(var name=0; name< movieTitle.length; name++){
+                    var compareMovieTitles = movieTitle[name].innerHTML.toLowerCase();
+                
+                        if(compareMovieTitles.indexOf(query) === -1){
+                                movieTitle[name].closest('div.media-carousel-movies').style.display="none";                                                        
+                        }
+                        else {
+                                movieTitle[name].closest('div.media-carousel-movies').style.display="block";
+                                counter++;
+                        }                    
+                }
+
+                showNoResultsText(counter);                
+        }
+
+                /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+                function toggleGenreList() {
+                        document.getElementById("dropdown-content").classList.toggle("show");                        
+                }
+
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(e) {
+                        
+                        if (!e.target.matches('#dropbtn')) {                
+
+                                var dropdownContent = document.getElementById("dropdown-content");
+                        
+                                if (dropdownContent.classList.contains('show')) {
+                                        dropdownContent.classList.remove('show');
+                                }
+                        }
+                }
+
+                function getMediaPosters(selectedGenre){
+                        var countMovies = 0; 
+                        var mediaCarouselMovies;            
+                        currentGenre = selectedGenre;                                              
+                        document.getElementById("genreText").innerHTML = selectedGenre;
+
+                        if(selectedGenre == 'All'){
+                            document.getElementsByClassName('movies-action')[0].style.display="block";    
+                            document.getElementsByClassName('movies-action')[0].style.display="block";
+                            document.getElementsByClassName('movies-drama')[0].style.display="block";
+                            document.getElementsByClassName('movies-scifi')[0].style.display="block";  
+                            mediaCarouselMovies = document.getElementsByClassName("media-carousel-movies");                             
+                        }
+                        if(selectedGenre == 'Artificial Intelligence'){
+                            document.getElementsByClassName('movies-action')[0].style.display="block";
+                            document.getElementsByClassName('movies-drama')[0].style.display="none";
+                            document.getElementsByClassName('movies-scifi')[0].style.display="none";
+                            mediaCarouselMovies = document.getElementsByClassName('movies-artificialintelligence')[0].getElementsByClassName("media-carousel-movies");                           
+                        }
+                        if(selectedGenre == 'Machine Learning'){
+                            document.getElementsByClassName('movies-action')[0].style.display="none";
+                            document.getElementsByClassName('movies-drama')[0].style.display="block";                            
+                            document.getElementsByClassName('movies-scifi')[0].style.display="none"; 
+                            mediaCarouselMovies = document.getElementsByClassName('movies-machinelearning')[0].getElementsByClassName("media-carousel-movies");                               
+                        }
+                        if(selectedGenre == 'Software Development'){
+                            document.getElementsByClassName('movies-action')[0].style.display="none";
+                            document.getElementsByClassName('movies-drama')[0].style.display="none";
+                            document.getElementsByClassName('movies-scifi')[0].style.display="block";
+                            mediaCarouselMovies = document.getElementsByClassName('movies-softwaredevelopment')[0].getElementsByClassName("media-carousel-movies");
+                        }                        
+
+                        
+                                var mediaCarouselMoviesCount = mediaCarouselMovies.length;
+                                
+                                for(var count = 0; count<mediaCarouselMoviesCount; count++){
+                                        if(mediaCarouselMovies[count].style.display == "block")
+                                                countMovies++;
+                                }
+                                console.log(countMovies);                                
+                        
+                                showNoResultsText(countMovies);
+                }
+        
+        </script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
